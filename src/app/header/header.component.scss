@@ -1,0 +1,26 @@
+h1 {
+    font-family: sans-serif;
+    color: #5658dd;
+}
+
+span {
+    margin-left: 60px;
+}    
+
+.header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    background-color: #24e5af ;
+    color: white;
+    font-weight: 600;
+}
+
+.spacer {
+    flex: 1;
+}
+
