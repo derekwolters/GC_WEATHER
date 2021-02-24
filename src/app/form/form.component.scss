@@ -15,7 +15,6 @@ textarea {
 
 .container {
     background-color: #29a66c;
-    //border-radius: 8px;
     display:flex;
     flex-direction: column;
     height: 30vh;
@@ -24,9 +23,9 @@ textarea {
     padding: 2px;    
     position: relative;
 }
+
 .item {
     flex-grow: 1;
     display:flex; 
     align-items:center;
 }
-
