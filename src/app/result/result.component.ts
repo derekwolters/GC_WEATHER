@@ -1,15 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { AppService } from '../app.service'
 
 @Component({
   selector: 'app-result',
   templateUrl: './result.component.html',
   styleUrls: ['./result.component.scss']
 })
-export class ResultComponent implements OnInit {
+export class ResultComponent {
 
-  constructor() { }
+  constructor(private readonly _appService: AppService) { }
 
-  ngOnInit(): void {
+  public get value(): string {
+    return this._appService.input;
   }
 
 }
