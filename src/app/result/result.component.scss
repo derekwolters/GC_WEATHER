@@ -1,6 +1,7 @@
 
 h2 {
     margin: 12px auto;
+    color: white;
 }
 
 p {
@@ -19,7 +20,7 @@ p {
     position: relative;
 }
 
-.item1,.item2,.item3,.item4,.item5 {
+.item {
     flex-grow: 1;
     display:flex; 
     align-items:center;
