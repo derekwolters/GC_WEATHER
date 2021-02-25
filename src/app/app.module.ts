@@ -12,9 +12,9 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 @NgModule({
   declarations: [	
     AppComponent,
-      HeaderComponent,
-      FormComponent,
-      ResultComponent,
+    HeaderComponent,
+    FormComponent,
+    ResultComponent,
    ],
   imports: [
     BrowserModule,
