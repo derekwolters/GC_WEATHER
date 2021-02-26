@@ -8,9 +8,12 @@ p {
     margin-bottom: 6px;
 }
 
+span {
+    margin-right: 6px;
+}
+
 .container {
     background-color: #FFFFFF1A;
-    //border-radius: 8px;
     display:flex;
     flex-direction: column;
     height: 30vh;

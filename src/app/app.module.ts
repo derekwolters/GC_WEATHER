@@ -7,6 +7,9 @@ import { HeaderComponent } from './header/header.component';
 import { FormComponent } from './form/form.component';
 import { ResultComponent } from './result/result.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { HttpClientModule } from '@angular/common/http';
+import { WeatherService } from './services/weather.service';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -19,9 +22,11 @@ import { FlexLayoutModule } from '@angular/flex-layout';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    HttpClientModule,
+    FormsModule
   ],
-  providers: [],
+  providers: [WeatherService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
