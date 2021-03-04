@@ -15,8 +15,6 @@ export class WeatherService {
   constructor(private http: HttpClient) { }
 
   load(city: String) {
-    console.log(city);
-    console.log(apiUrl + '?q=' + city + ',' + stateCode + '&APPID=' + apiKey);
       return this.http.get(apiUrl + '?q=' + city + ',' + stateCode + ',' + countryCode + '&appid=' + apiKey)
   }
   

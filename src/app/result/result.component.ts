@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef } from '@angular/core';
 import { Weather } from '../app.component'
 import { AppService } from '../app.service';
 
@@ -22,8 +22,8 @@ export class ResultComponent {
 
   update(weather: Weather) {
     this.weather = weather
-    console.log('weather');
-    console.log(weather);
+    console.log('icon');
+    console.log(weather.icon);
   }  
 
   public get value(): string {

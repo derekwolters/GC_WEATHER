@@ -29,9 +29,8 @@ export class FormComponent {
       this.weather.condition = data['weather'][0]['main']
       this.weather.temperature = Math.round((data['main']['temp'] - 273.15)*1.8 + 32)
       this.weather.feelsLike = Math.round((data['main']['feels_like'] - 273.15)*1.8 + 32)
-      this.weather.windSpeed = data['wind']['speed']
+      this.weather.windSpeed = Math.round(data['wind']['speed'])
       this.weather.icon = this._weatherData.getIconUrl(data['weather'][0]['icon'])
-      console.log(this.weather.city, this.weather.temperature);
       this.onSelection.emit(this.weather)
     })
   }

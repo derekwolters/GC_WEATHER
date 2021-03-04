@@ -10,6 +10,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { HttpClientModule } from '@angular/common/http';
 import { WeatherService } from './services/weather.service';
 import { FormsModule } from '@angular/forms';
+import { BackgroundModule, lightTheme, darkTheme } from './background';
 
 
 @NgModule({
@@ -24,7 +25,11 @@ import { FormsModule } from '@angular/forms';
     AppRoutingModule,
     FlexLayoutModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    BackgroundModule.forRoot({
+      backgrounds: [lightTheme, darkTheme],
+      active: 'light'
+    })
   ],
   providers: [WeatherService],
   bootstrap: [AppComponent]
