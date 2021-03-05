@@ -32,7 +32,9 @@ ngOnInit(): void {
     updateBackground(background: Background): void {
         // project properties onto the element
         for (const key in background.properties) {
-            this.ELEMENT_REF.nativeElement.style.setProperty(key, background.properties[key]);
+            if (background.properties.hasOwnProperty(key)){
+                this.ELEMENT_REF.nativeElement.style.setProperty(key, background.properties[key]);
+            }
         }
 
         // remove old background

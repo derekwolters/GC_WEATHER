@@ -30,7 +30,6 @@ export class BackgroundService {
 
   setBackground(name: string): void {
     this.background = name;
-    console.log(this.background);
     this.backgroundChange.emit( this.getActiveBackground());
   }
 

@@ -1,6 +1,6 @@
 import { Component, Output, EventEmitter} from '@angular/core';
 import { WeatherService } from '../services/weather.service';
-import { Weather } from '../app.component';
+import { WeatherModel } from '../models/weatherModel';
 
 @Component({
   selector: 'app-form',
@@ -9,22 +9,25 @@ import { Weather } from '../app.component';
 })
 
 export class FormComponent {
-  @Output() onSelection: EventEmitter<Weather> = new EventEmitter<Weather>();
+  @Output() Selection: EventEmitter<WeatherModel> = new EventEmitter<WeatherModel>();
 
-  weather: Weather = new Weather();
+  weather: WeatherModel = new WeatherModel();
   public city = '';
 
   constructor(private WEATHER_DATA: WeatherService){}
 
   public submit(): void {
     this.WEATHER_DATA.load(this.city).subscribe(data => {
-      this.weather.city = data['name'];
-      this.weather.condition = data['weather'][0]['main'];
-      this.weather.temperature = Math.round((data['main']['temp'] - 273.15) * 1.8 + 32);
-      this.weather.feelsLike = Math.round((data['main']['feels_like'] - 273.15) * 1.8 + 32);
-      this.weather.windSpeed = Math.round(data['wind']['speed']);
-      this.weather.icon = this.WEATHER_DATA.getIconUrl(data['weather'][0]['icon']);
-      this.onSelection.emit(this.weather);
+      const weatherDetails = new WeatherModel();
+
+      weatherDetails.city = data.name;
+      weatherDetails.condition = data.weather[0].main;
+      weatherDetails.temperature = Math.round((data.main.temp - 273.15) * 1.8 + 32);
+      weatherDetails.feelsLike = Math.round((data.main.feels_like - 273.15) * 1.8 + 32);
+      weatherDetails.windSpeed = Math.round(data.wind.speed);
+      weatherDetails.icon = this.WEATHER_DATA.getIconUrl(data.weather[0].icon);
+
+      this.Selection.emit(weatherDetails);
     });
   }
 }

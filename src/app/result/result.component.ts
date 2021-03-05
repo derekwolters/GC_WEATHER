@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Weather } from '../app.component';
+import { WeatherModel } from '../models/weatherModel';
 import { BackgroundService } from '../services/background.service';
 
 @Component({
@@ -11,7 +11,7 @@ export class ResultComponent {
 
   constructor(private backgroundService: BackgroundService) { }
 
-  weather: Weather = {
+  weather: WeatherModel = {
     city: '',
     condition: '-',
     temperature: 0,
@@ -20,7 +20,7 @@ export class ResultComponent {
     icon: ''
   };
 
-  public update(weather: Weather): void {
+  public update(weather: WeatherModel): void {
     this.weather = weather;
     this.backgroundUpdate(weather.icon);
   }
