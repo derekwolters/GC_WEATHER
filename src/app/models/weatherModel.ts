@@ -1,8 +1,8 @@
 export class WeatherModel {
-    city!: string;
-    condition!: string;
-    temperature!: number;
-    feelsLike!: number;
-    windSpeed!: number;
-    icon!: string;
+    city = '';
+    condition = '';
+    temperature = 0;
+    feelsLike = 0;
+    windSpeed = 0;
+    icon = '';
   }
