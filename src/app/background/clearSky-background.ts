@@ -1,13 +1,13 @@
 import { Background } from './symbols';
 
-export const thunderstormTheme: Background = {
-  name: 'thunderstorm',
+export const clearSkyBackground: Background = {
+  name: 'clearSky',
   properties: {
-    'background': 'url(assets/thunderstorm.jpg) no-repeat center center fixed', 
+    background: 'url(assets/clearSky.jpg) no-repeat center center fixed',
+    height: '100vh',
     '-webkit-background-size': 'cover',
     '-moz-background-size': 'cover',
     '-o-background-size': 'cover',
     'background-size': 'cover',
-    'height': '100vh',
   }
 };

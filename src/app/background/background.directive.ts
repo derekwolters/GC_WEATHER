@@ -5,47 +5,43 @@ import { takeUntil } from 'rxjs/operators';
 import { Background } from './symbols';
 
 @Directive({
-    selector: '[theme]'
+    selector: '[appBackground]'
 })
 
 export class BackgroundDirective implements OnInit, OnDestroy {
 
-private _destroy$ = new Subject();
+private DESTROY$ = new Subject();
 
 constructor(
-    private _elementRef: ElementRef,
-    private _themeService: BackgroundService
+    private ELEMENT_REF: ElementRef,
+    private BACKGROUND_SERVICE: BackgroundService
 ) {}
 
-ngOnInit() {
-    const active = this._themeService.getActiveTheme();
-    if (active) {
-        this.updateTheme(active);
+ngOnInit(): void {
+
+    this.BACKGROUND_SERVICE.backgroundChange
+        .pipe(takeUntil(this.DESTROY$))
+        .subscribe((background: Background) => this.updateBackground(background));
     }
 
-    this._themeService.themeChange
-        .pipe(takeUntil(this._destroy$))
-        .subscribe((theme: Background) => this.updateTheme(theme));
+    ngOnDestroy(): void {
+        this.DESTROY$.next();
+        this.DESTROY$.complete();
     }
 
-    ngOnDestroy() {
-    this._destroy$.next();
-    this._destroy$.complete();
-    }
+    updateBackground(background: Background): void {
+        // project properties onto the element
+        for (const key in background.properties) {
+            this.ELEMENT_REF.nativeElement.style.setProperty(key, background.properties[key]);
+        }
 
-    updateTheme(theme: Background) {
-    // project properties onto the element
-    for (const key in theme.properties) {
-        this._elementRef.nativeElement.style.setProperty(key, theme.properties[key]);
-    }
+        // remove old background
+        for (const name of this.BACKGROUND_SERVICE.background) {
+            this.ELEMENT_REF.nativeElement.classList.remove(`${name}-background`);
+        }
 
-    // remove old theme
-    for (const name of this._themeService.theme) {
-        this._elementRef.nativeElement.classList.remove(`${name}-theme`);
-    }
-
-    // alias element with theme name
-    this._elementRef.nativeElement.classList.add(`${theme.name}-theme`);
+        // alias element with background name
+        this.ELEMENT_REF.nativeElement.classList.add(`${background.name}-background`);
     }
 
 }

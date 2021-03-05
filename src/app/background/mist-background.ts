@@ -1,13 +1,13 @@
 import { Background } from './symbols';
 
-export const scatteredCloudsTheme: Background = {
-  name: 'scatteredClouds',
+export const mistBackground: Background = {
+  name: 'mist',
   properties: {
-    'background': 'url(assets/clear.jpg) no-repeat center center fixed', 
+    background: 'url(assets/mist.jpg) no-repeat center center fixed',
+    height: '100vh',
     '-webkit-background-size': 'cover',
     '-moz-background-size': 'cover',
     '-o-background-size': 'cover',
     'background-size': 'cover',
-    'height': '100vh',
   }
 };

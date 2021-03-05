@@ -1,5 +1,5 @@
-import { Component, ElementRef } from '@angular/core';
-import { Weather } from '../app.component'
+import { Component } from '@angular/core';
+import { Weather } from '../app.component';
 import { BackgroundService } from '../services/background.service';
 
 @Component({
@@ -18,46 +18,44 @@ export class ResultComponent {
     feelsLike: 0,
     windSpeed: 0,
     icon: ''
+  };
+
+  public update(weather: Weather): void {
+    this.weather = weather;
+    this.backgroundUpdate(weather.icon);
   }
 
-  update(weather: Weather) {
-    this.weather = weather
-    console.log('icon');
-    console.log(weather.icon);
-    this.backgroundUpdate(weather.icon);
-  }  
-
   private getIconName(url): string {
-    let icon;
-    let iconNameBegin = url.indexOf('w/')+2;
-    let iconNameEnd = url.indexOf('.png');
-    icon = url.substring(iconNameBegin, iconNameEnd);
-    console.log("Icon 1");
-    console.log(icon);
+    const iconNameBegin = url.indexOf('w/') + 2;
+    const iconNameEnd = url.indexOf('.png');
+    const icon = url.substring(iconNameBegin, iconNameEnd);
     return icon;
   }
 
-  backgroundUpdate(weatherIcon) {
-    let icon = this.getIconName(weatherIcon);
+  backgroundUpdate(weatherIcon): void {
+    const icon = this.getIconName(weatherIcon);
 
+    // this can be done more efficiently
     if (icon === '01d' || icon === '01n') {
-      this.backgroundService.setTheme('clearSky');
-    } else if (icon === '02d'|| icon === '02n') {
-      this.backgroundService.setTheme('fewClouds')
-    } else if (icon === '03d'|| icon === '03n') {
-      this.backgroundService.setTheme('scatteredClouds')
-    } else if (icon === '04d'|| icon === '04n') {
-      this.backgroundService.setTheme('brokenClouds')
-    } else if (icon === '09d'|| icon === '09n') {
-      this.backgroundService.setTheme('showerRain')
-    } else if (icon === '10d'|| icon === '10n') {
-      this.backgroundService.setTheme('rain')
-    } else if (icon === '11d'|| icon === '11n') {
-      this.backgroundService.setTheme('thunderstorm')
-    } else if (icon === '13d'|| icon === '13n') {
-      this.backgroundService.setTheme('snow')
-    } else if (icon === '50d'|| icon === '50n') {
-      this.backgroundService.setTheme('mist')
+      this.backgroundService.setBackground('clearSky');
+    } else if (icon === '02d' || icon === '02n') {
+      this.backgroundService.setBackground('fewClouds');
+    } else if (icon === '03d' || icon === '03n') {
+      this.backgroundService.setBackground('scatteredClouds');
+    } else if (icon === '04d' || icon === '04n') {
+      this.backgroundService.setBackground('brokenClouds');
+    } else if (icon === '09d' || icon === '09n') {
+      this.backgroundService.setBackground('showerRain');
+    } else if (icon === '10d' || icon === '10n') {
+      this.backgroundService.setBackground('rain');
+    } else if (icon === '11d' || icon === '11n') {
+      this.backgroundService.setBackground('thunderstorm');
+    } else if (icon === '13d' || icon === '13n') {
+      this.backgroundService.setBackground('snow');
+    } else if (icon === '50d' || icon === '50n') {
+      this.backgroundService.setBackground('mist');
+    } else {
+      this.backgroundService.setBackground('dark');
     }
   }
 }

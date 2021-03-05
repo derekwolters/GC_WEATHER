@@ -1,6 +1,6 @@
 import { Background } from './symbols';
 
-export const darkTheme: Background = {
+export const darkBackground: Background = {
   name: 'dark',
   properties: {
     '--background': '#1F2125',

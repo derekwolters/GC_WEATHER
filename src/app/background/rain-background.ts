@@ -1,13 +1,13 @@
 import { Background } from './symbols';
 
-export const showerRainTheme: Background = {
-  name: 'showerRain',
+export const rainBackground: Background = {
+  name: 'rain',
   properties: {
-    'background': 'url(assets/showerRain.jpg) no-repeat center center fixed', 
+    background: 'url(assets/rain.jpg) no-repeat center center fixed',
+    height: '100vh',
     '-webkit-background-size': 'cover',
     '-moz-background-size': 'cover',
     '-o-background-size': 'cover',
     'background-size': 'cover',
-    'height': '100vh',
   }
 };

@@ -4,50 +4,49 @@ import { BACKGROUNDS, ACTIVE_BACKGROUND, Background } from '../background/symbol
 @Injectable()
 export class BackgroundService {
 
-  themeChange = new EventEmitter<Background>();
+  backgroundChange = new EventEmitter<Background>();
 
   constructor(
-    @Inject(BACKGROUNDS) public themes: Background[],
-    @Inject(ACTIVE_BACKGROUND) public theme: string
+    @Inject(BACKGROUNDS) public backgrounds: Background[],
+    @Inject(ACTIVE_BACKGROUND) public background: string
   ) {
   }
 
-  getTheme(name: string) {
-    const theme = this.themes.find(t => t.name === name);
-    if (!theme) {
-      throw new Error(`Theme not found: '${name}'`);
+  getBackground(name: string): Background {
+    const background = this.backgrounds.find(t => t.name === name);
+    if (!background) {
+      throw new Error(`Background not found: '${name}'`);
     }
-    return theme;
+    return background;
   }
 
-  getActiveTheme() {
-    return this.getTheme(this.theme);
+  getActiveBackground(): Background {
+    return this.getBackground(this.background);
   }
 
-  getProperty(propName: string) {
-    return this.getActiveTheme().properties[propName];
+  getProperty(propName: string): string {
+    return this.getActiveBackground().properties[propName];
   }
 
-  setTheme(name: string) {
-    this.theme = name;
-    console.log(this.theme)
-    this.themeChange.emit( this.getActiveTheme());
+  setBackground(name: string): void {
+    this.background = name;
+    console.log(this.background);
+    this.backgroundChange.emit( this.getActiveBackground());
   }
 
-  registerTheme(theme: Background) {
-    this.themes.push(theme);
+  registerBackground(background: Background): void {
+    this.backgrounds.push(background);
   }
 
-  updateTheme(name: string, properties: { [key: string]: string; }) {
-    const theme = this.getTheme(name);
-    theme.properties = {
-      ...theme.properties,
+  updateBackground(name: string, properties: { [key: string]: string; }): void {
+    const background = this.getBackground(name);
+    background.properties = {
+      ...background.properties,
       ...properties
     };
 
-    if (name === this.theme) {
-      this.themeChange.emit(theme);
+    if (name === this.background) {
+      this.backgroundChange.emit(background);
     }
   }
-
 }
