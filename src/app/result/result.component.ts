@@ -1,7 +1,5 @@
 import { Component, ElementRef } from '@angular/core';
-//import { isContext } from 'vm';
 import { Weather } from '../app.component'
-import { AppService } from '../app.service';
 import { BackgroundService } from '../services/background.service';
 
 @Component({
@@ -11,8 +9,7 @@ import { BackgroundService } from '../services/background.service';
 })
 export class ResultComponent {
 
-  constructor(private readonly _appService: AppService,
-              private backgroundService: BackgroundService) { }
+  constructor(private backgroundService: BackgroundService) { }
 
   weather: Weather = {
     city: '',
@@ -29,10 +26,6 @@ export class ResultComponent {
     console.log(weather.icon);
     this.backgroundUpdate(weather.icon);
   }  
-
-  public get value(): string {
-    return this._appService.input;
-  }
 
   private getIconName(url): string {
     let icon;

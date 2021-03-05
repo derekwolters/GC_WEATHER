@@ -1,5 +1,4 @@
 import { Component, Output, EventEmitter} from "@angular/core";
-import { AppService } from "../app.service";
 import { WeatherService } from '../services/weather.service';
 import { Weather } from '../app.component';
 
@@ -16,11 +15,10 @@ export class FormComponent {
   public input: String = ''; 
   public city: String = '';
   
-  constructor(private readonly _appService: AppService, private _weatherData: WeatherService){}  
+  constructor(private _weatherData: WeatherService){}  
 
   public onInput(a_oEvent): void {
     this.input = a_oEvent.currentTarget.value;
-    this._appService.input = a_oEvent.currentTarget.value;
   }
 
   public submit() {
