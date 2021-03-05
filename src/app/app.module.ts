@@ -10,7 +10,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { HttpClientModule } from '@angular/common/http';
 import { WeatherService } from './services/weather.service';
 import { FormsModule } from '@angular/forms';
-import { BackgroundModule, lightTheme, darkTheme } from './background';
+import { BackgroundModule, darkTheme, clearSkyTheme, fewCloudsTheme, scatteredCloudsTheme, brokenCloudsTheme, 
+  showerRainTheme, rainTheme, thunderstormTheme, snowTheme, mistTheme } from './background';
 
 
 @NgModule({
@@ -19,7 +20,7 @@ import { BackgroundModule, lightTheme, darkTheme } from './background';
     HeaderComponent,
     FormComponent,
     ResultComponent,
-   ],
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -27,8 +28,9 @@ import { BackgroundModule, lightTheme, darkTheme } from './background';
     HttpClientModule,
     FormsModule,
     BackgroundModule.forRoot({
-      backgrounds: [lightTheme, darkTheme],
-      active: 'light'
+      backgrounds: [darkTheme, clearSkyTheme, fewCloudsTheme, scatteredCloudsTheme, brokenCloudsTheme, 
+        showerRainTheme, rainTheme, thunderstormTheme, snowTheme, mistTheme],
+      active: 'dark'
     })
   ],
   providers: [WeatherService],

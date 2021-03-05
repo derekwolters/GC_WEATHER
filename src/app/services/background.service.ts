@@ -30,6 +30,7 @@ export class BackgroundService {
 
   setTheme(name: string) {
     this.theme = name;
+    console.log(this.theme)
     this.themeChange.emit( this.getActiveTheme());
   }
 

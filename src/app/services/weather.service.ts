@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 import { Weather } from '../weather';
+// import { isContext } from 'vm';
 
 let apiUrl: String = 'https://api.openweathermap.org/data/2.5/weather';
 let apiKey = '7eff685950e68ebc7053c218450fc506'; //Move key to a secure location
