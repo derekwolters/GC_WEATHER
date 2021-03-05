@@ -1,7 +1,7 @@
-<div class="container">
-    <h2 class="resultCity" type="text">{{[value]}}</h2>
-    <div class="item">Condition: </div>
-    <div class="item">Temperature: </div>
-    <div class="item">Feels Like: </div>
-    <div class="item">Wind Speed: </div>
+<div class="resultContainer">
+    <h2 class="item">{{weather.city}}</h2>
+    <div class="item"><span>Condition:</span>{{weather.condition}}</div>
+    <div class="item"><span>Temperature:</span>{{weather.temperature}}°F</div>
+    <div class="item"><span>Feels Like:</span>{{weather.feelsLike}}°F</div>
+    <div class="item"><span>Wind Speed:</span>{{weather.windSpeed}} MPH</div>
 </div>

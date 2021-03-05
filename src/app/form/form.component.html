@@ -1,5 +1,5 @@
-<div class="container">
+<form class="formContainer" (ngSubmit)="submit()">
     <h2 class="item1">City:</h2>
-    <input class="item2" type="text" (input)="onInput($event)" placeholder="Enter your city">
-    <button class="item3">SEARCH</button>
-</div>
+    <input class="item2" type="text" name="city" [(ngModel)]="city" placeholder="Enter your city">
+    <input class="button" type="submit" value="Search">
+</form>

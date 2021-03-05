@@ -1,5 +1,6 @@
-import { Component } from "@angular/core";
-import { AppService } from "../app.service";
+import { Component, Output, EventEmitter} from '@angular/core';
+import { WeatherService } from '../services/weather.service';
+import { WeatherModel } from '../models/weatherModel';
 
 @Component({
   selector: 'app-form',
@@ -8,13 +9,25 @@ import { AppService } from "../app.service";
 })
 
 export class FormComponent {
-  
-  constructor(private readonly _appService: AppService){}
+  @Output() Selection: EventEmitter<WeatherModel> = new EventEmitter<WeatherModel>();
 
-  public input: string = ''; 
+  weather: WeatherModel = new WeatherModel();
+  public city = '';
 
-  public onInput(a_oEvent): void {
-    this.input = a_oEvent.currentTarget.value;
-    this._appService.input = a_oEvent.currentTarget.value;
+  constructor(private WEATHER_DATA: WeatherService){}
+
+  public submit(): void {
+    this.WEATHER_DATA.load(this.city).subscribe(data => {
+      const weatherDetails = new WeatherModel();
+
+      weatherDetails.city = data.name;
+      weatherDetails.condition = data.weather[0].main;
+      weatherDetails.temperature = Math.round((data.main.temp - 273.15) * 1.8 + 32);
+      weatherDetails.feelsLike = Math.round((data.main.feels_like - 273.15) * 1.8 + 32);
+      weatherDetails.windSpeed = Math.round(data.wind.speed);
+      weatherDetails.icon = this.WEATHER_DATA.getIconUrl(data.weather[0].icon);
+
+      this.Selection.emit(weatherDetails);
+    });
   }
 }
