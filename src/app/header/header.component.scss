@@ -1,6 +1,6 @@
 h1 {
     font-family: sans-serif;
-    color: #5658dd;
+    color: black;
 }
 
 span {
@@ -8,14 +8,14 @@ span {
 }    
 
 .header {
-    position: absolute;
+    //position: absolute;
     top: 0;
     left: 0;
     right: 0;
     height: 60px;
     display: flex;
     align-items: center;
-    background-color: #24e5af ;
+    background-color: #29a66c ;
     color: white;
     font-weight: 600;
 }

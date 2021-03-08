@@ -1,0 +1,32 @@
+
+h2 {
+    margin: 12px auto;
+    color: white;
+}
+
+p {
+    margin-bottom: 6px;
+}
+
+span {
+    margin-right: 6px;
+}
+
+.resultContainer {
+    background-color: #1517194D;
+    display:flex;
+    flex-direction: column;
+    height: 200px;
+    margin: 0 auto;    
+    padding: 2px;    
+    position: relative;
+    width: 200px;
+}
+
+.item {
+    align-items:center;
+    color: white;
+    display:flex; 
+    flex-grow: 1;   
+    margin-bottom: 3px;    
+}

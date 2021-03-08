@@ -19,7 +19,10 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    //FIX THIS
+    "noImplicitAny": false
+
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

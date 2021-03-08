@@ -1,1 +1,7 @@
-<app-header></app-header>
+
+<div appBackground class="container">    
+    <app-header></app-header>
+    <app-form (Selection)="result.update($event)"></app-form>
+    <app-result #result></app-result>
+</div>
+

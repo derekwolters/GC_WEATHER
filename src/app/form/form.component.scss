@@ -1,0 +1,41 @@
+
+h2 {
+    margin: 12px auto;
+}
+
+input {
+    margin: 12px auto;
+    height: 50px;
+}
+
+.button {
+    border: 0;
+    color: white;
+    height: 100px;
+    margin: 12px auto;
+    width: 100px;
+    border-radius: 50%;
+    background-color: #151719;
+}
+
+.formContainer {
+    background-color: #29a66c;
+    display:flex;
+    flex-direction: column;
+    height: 200px;
+    margin: 40px auto;    
+    padding: 2px;    
+    position: relative;
+    width: 200px;
+}
+
+.item {
+    align-items:center;
+    flex-grow: 1;
+    display:flex;    
+}
+
+.button {
+    width: 62px;
+    outline:0;
+}
